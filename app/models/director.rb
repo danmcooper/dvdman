@@ -2,5 +2,7 @@ class Director < ActiveRecord::Base
   attr_accessible :dob, :gender, :name
 
   validates :name, presence: true, uniqueness: true
-  validates :gender, presence: true  
+  validates :gender, presence: true
+
+  has_many :dvds 
 end

@@ -3,4 +3,7 @@ class Dvd < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true
   validates :summary, presence: true
+
+  has_and_belongs_to_many :actors
+  has_one :directors
 end
