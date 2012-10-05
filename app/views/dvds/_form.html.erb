@@ -23,6 +23,18 @@
       <%= f.text_field :asin, :class => 'text_field' %>
     </div>
   </div>
+    <div class="control-group">
+    <%= f.label :actors, :class => 'control-label' %>
+    <div class="controls">
+      <%= select_tag "dvd[actor_ids]", options_for_select(Actor.all.map { |actor| [actor.name, actor.id] }, @dvd.actors.map { |actor| actor.id}), {:multiple=>true, :size=>10} %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :director, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select :director_id, Director.all, :id, :name, :include_blank => "" %>
+    </div>
+  </div>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
