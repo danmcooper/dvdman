@@ -1,33 +1,32 @@
-<%= form_for(@dvd) do |f| %>
-  <% if @dvd.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@dvd.errors.count, "error") %> prohibited this dvd from being saved:</h2>
-
-      <ul>
-      <% @dvd.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @dvd, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label :release_date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :release_date, :class => 'date_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :summary, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :summary, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :asin, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :asin, :class => 'text_field' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :release_date %><br />
-    <%= f.date_select :release_date %>
-  </div>
-  <div class="field">
-    <%= f.label :summary %><br />
-    <%= f.text_area :summary %>
-  </div>
-  <div class="field">
-    <%= f.label :asin %><br />
-    <%= f.text_field :asin %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                dvds_path, :class => 'btn' %>
   </div>
 <% end %>

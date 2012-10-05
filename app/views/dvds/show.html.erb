@@ -1,25 +1,27 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Dvd -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <b>Name:</b>
-  <%= @dvd.name %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @dvd.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:release_date) %>:</strong></dt>
+  <dd><%= @dvd.release_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:summary) %>:</strong></dt>
+  <dd><%= @dvd.summary %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:asin) %>:</strong></dt>
+  <dd><%= @dvd.asin %></dd>
+</dl>
 
-<p>
-  <b>Release date:</b>
-  <%= @dvd.release_date %>
-</p>
-
-<p>
-  <b>Summary:</b>
-  <%= @dvd.summary %>
-</p>
-
-<p>
-  <b>Asin:</b>
-  <%= @dvd.asin %>
-</p>
-
-
-<%= link_to 'Edit', edit_dvd_path(@dvd) %> |
-<%= link_to 'Back', dvds_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              dvds_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_dvd_path(@dvd), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              dvd_path(@dvd),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

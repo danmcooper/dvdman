@@ -1,29 +1,42 @@
-<h1>Listing dvds</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Release date</th>
-    <th>Summary</th>
-    <th>Asin</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @dvds.each do |dvd| %>
-  <tr>
-    <td><%= dvd.name %></td>
-    <td><%= dvd.release_date %></td>
-    <td><%= dvd.summary %></td>
-    <td><%= dvd.asin %></td>
-    <td><%= link_to 'Show', dvd %></td>
-    <td><%= link_to 'Edit', edit_dvd_path(dvd) %></td>
-    <td><%= link_to 'Destroy', dvd, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<%- model_class = Dvd -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:release_date) %></th>
+      <th><%= model_class.human_attribute_name(:summary) %></th>
+      <th><%= model_class.human_attribute_name(:asin) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @dvds.each do |dvd| %>
+      <tr>
+        <td><%= link_to dvd.id, dvd_path(dvd) %></td>
+        <td><%= dvd.name %></td>
+        <td><%= dvd.release_date %></td>
+        <td><%= dvd.summary %></td>
+        <td><%= dvd.asin %></td>
+        <td><%=l dvd.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_dvd_path(dvd), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      dvd_path(dvd),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Dvd', new_dvd_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_dvd_path,
+            :class => 'btn btn-primary' %>
