@@ -5,24 +5,20 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:release_date) %></th>
       <th><%= model_class.human_attribute_name(:summary) %></th>
       <th><%= model_class.human_attribute_name(:asin) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @dvds.each do |dvd| %>
       <tr>
-        <td><%= link_to dvd.id, dvd_path(dvd) %></td>
-        <td><%= dvd.name %></td>
+        <td><%= link_to dvd.name, dvd_path(dvd) %></td>
         <td><%= dvd.release_date %></td>
         <td><%= dvd.summary %></td>
-        <td><%= dvd.asin %></td>
-        <td><%=l dvd.created_at %></td>
+        <td><%= amazon_link(dvd) %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_dvd_path(dvd), :class => 'btn btn-mini' %>

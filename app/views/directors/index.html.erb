@@ -5,7 +5,6 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:dob) %></th>
       <th><%= model_class.human_attribute_name(:gender) %></th>
@@ -16,8 +15,7 @@
   <tbody>
     <% @directors.each do |director| %>
       <tr>
-        <td><%= link_to director.id, director_path(director) %></td>
-        <td><%= director.name %></td>
+        <td><%= link_to director.name, director_path(director) %></td>
         <td><%= director.dob %></td>
         <td><%= director.gender %></td>
         <td><%=l director.created_at %></td>

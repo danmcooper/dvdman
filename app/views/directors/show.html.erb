@@ -10,6 +10,8 @@
   <dd><%= @director.dob %></dd>
   <dt><strong><%= model_class.human_attribute_name(:gender) %>:</strong></dt>
   <dd><%= @director.gender %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:dvds) %>:</strong></dt>
+  <dd><%= @director.dvds.map { |dvd| dvd.name }.join(", ") %></dd>    
 </dl>
 
 <div class="form-actions">

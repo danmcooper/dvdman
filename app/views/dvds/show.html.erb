@@ -11,7 +11,7 @@
   <dt><strong><%= model_class.human_attribute_name(:summary) %>:</strong></dt>
   <dd><%= @dvd.summary %></dd>
   <dt><strong><%= model_class.human_attribute_name(:asin) %>:</strong></dt>
-  <dd><%= amazon_link(@dvd, @dvd.asin) %></dd>
+  <dd><%= amazon_link(@dvd) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:actors) %>:</strong></dt>
   <dd><%= @dvd.actors.map { |actor| actor.name }.join(", ") %></dd>
   <dt><strong><%= model_class.human_attribute_name(:director) %>:</strong></dt>
