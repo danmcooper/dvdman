@@ -7,11 +7,11 @@
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @actor.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:dob) %>:</strong></dt>
-  <dd><%= @actor.dob %></dd>
+  <dd><%= @actor.dob %>&nbsp;</dd>
   <dt><strong><%= model_class.human_attribute_name(:gender) %>:</strong></dt>
   <dd><%= @actor.gender %></dd>
   <dt><strong><%= model_class.human_attribute_name(:dvds) %>:</strong></dt>
-  <dd><%= @actor.dvds.map { |dvd| dvd.name }.join(", ") %></dd>  
+  <dd><%= @actor.dvds.map { |dvd| dvd.name }.join(", ") %>&nbsp;</dd>  
 </dl>
 
 <div class="form-actions">

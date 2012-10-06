@@ -8,13 +8,16 @@
   <div class="control-group">
     <%= f.label :dob, :class => 'control-label' %>
     <div class="controls">
-      <%= f.date_select :dob, :class => 'date_select' %>
+      <%= f.date_select :dob, :class => 'date_select', :start_year => 1800, :end_year => Time.now.year %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :gender, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :gender, :class => 'text_field' %>
+    <div class="controls gender">
+      <%= f.radio_button :gender, 'Female', :checked => true %> 
+      <%= label :gender_Female, 'Female' %>
+      <%= f.radio_button :gender, 'Male' %>
+      <%= label :gender_Male, 'Male' %>
     </div>
   </div>
   <div class="control-group">
